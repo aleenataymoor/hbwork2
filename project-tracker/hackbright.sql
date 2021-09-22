@@ -227,7 +227,26 @@ ALTER TABLE ONLY public.projects
 ALTER TABLE ONLY public.students
     ADD CONSTRAINT students_pkey PRIMARY KEY (id);
 
+/* FURTHER STUDY*/
 
+CREATE VIEW report_card_view AS
+SELECT students.first_name,
+       students.last_name,
+       projects.title,
+       projects.max_grade,
+       grades.grade
+FROM students
+  JOIN grades ON (students.github = grades.student_github)
+  JOIN projects ON (projects.title = grades.project_title);
+
+
+
+SELECT *
+FROM report_card_view;
+
+
+SELECT *
+FROM report_card_view;
 --
 -- PostgreSQL database dump complete
 --
